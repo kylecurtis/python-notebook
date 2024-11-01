@@ -1,4 +1,4 @@
-![[usage.png]]
+![[usage-guide-banner.png]]
 
 <br>
 
