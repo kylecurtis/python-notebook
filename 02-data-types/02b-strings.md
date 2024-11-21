@@ -10,7 +10,7 @@ In Python, strings are a core data type for handling text, offering numerous bui
 
 <br>
 
-## **Basics of Strings**
+## Basics of Strings
 
 Strings in Python are sequences of characters enclosed within single (`'...'`), double (`"..."`), or triple quotes (`'''...'''` or `"""..."""`). They are immutable, meaning they cannot be changed after creation.
 
@@ -39,6 +39,101 @@ print(multiline_str)
 
 <br>
 
+### Escape Characters in Strings
+
+Escape characters are used to represent characters in strings that would otherwise be difficult or impossible to include. They are preceded by a backslash (`\`) to signal their special meaning.
+
+<br>
+
+---
+
+<br>
+
+### Common Escape Characters
+
+| **Escape Character** | **Description**            | **Example**                 | **Output**                    |
+| :------------------: | -------------------------- | --------------------------- | ----------------------------- |
+|         `\\`         | Backslash                  | `"This is a backslash: \\"` | `This is a backslash: \`      |
+|         `\'`         | Single quote               | `"It\'s Python!"`           | `It's Python!`                |
+|         `\"`         | Double quote               | `"She said, \"Hello!\""`    | `She said, "Hello!"`          |
+|         `\n`         | New line                   | `"Hello\nWorld!"`           | `Hello`<br>`World!`           |
+|         `\t`         | Tab                        | `"Hello\tWorld!"`           | `Hello    World!`             |
+|         `\r`         | Carriage return            | `"Hello\rWorld!"`           | `World!`                      |
+|         `\b`         | Backspace                  | `"Hello\bWorld!"`           | `HelloWorld!`                 |
+|         `\f`         | Form feed                  | `"Hello\fWorld!"`           | `Hello`<form feed>`World!`    |
+|         `\v`         | Vertical tab               | `"Hello\vWorld!"`           | `Hello`<vertical tab>`World!` |
+|       `\uXXXX`       | Unicode character (16-bit) | `"\u2764"`                  | ❤️ (heart symbol)             |
+|     `\UXXXXXXXX`     | Unicode character (32-bit) | `"\U0001F600"`              | 😀 (smiley face)              |
+|        `\xXX`        | Hexadecimal character      | `"\x48\x65\x6C\x6C\x6F"`    | `Hello`                       |
+|         `\0`         | Null character             | `"Hello\0World!"`           | `HelloWorld!`                 |
+
+<br>
+
+### Examples of Escape Characters
+
+> [!info]
+> Escape characters help include special characters in strings or format strings in specific ways.
+
+<br>
+
+```python
+# Including quotes
+print('It\'s Python!')
+print("She said, \"Hello!\"")
+
+# New lines and tabs
+print("Line1\nLine2")
+print("Column1\tColumn2")
+
+# Unicode and hexadecimal characters
+print("\u2764")                # Heart symbol
+print("\U0001F600")            # Smiley face
+print("\x48\x65\x6C\x6C\x6F")  # Hexadecimal for "Hello"
+```
+
+> [!success]- Code Output
+> It's Python!  
+> She said, "Hello!"  
+> Line1  
+> Line2  
+> Column1 Column2  
+> ❤️  
+> 😀  
+> Hello
+
+<br>
+
+---
+
+<br>
+
+### Raw Strings
+
+> [!info]
+> Sometimes, escape sequences should be treated as literal text. Use raw strings by prefixing the string with an `r`.
+>
+> In raw strings, backslashes are treated as literal characters, and escape sequences are not processed.
+
+<br>
+
+```python
+# Without raw string
+print("C:\\Users\\Name\\Documents")
+
+# Using raw string
+print(r"C:\Users\Name\Documents")
+```
+
+> [!success]- Code Output
+> C:\Users\Name\Documents  
+> C:\Users\Name\Documents
+
+<br>
+
+---
+
+<br>
+
 ## String Slicing and Reversing
 
 Python strings are sequences, which means you can access individual characters and subsequences using slicing. This makes operations like extracting parts of a string, skipping characters, or reversing straightforward.
@@ -56,13 +151,14 @@ Python strings are sequences, which means you can access individual characters a
 >
 > ```python
 > text = "Python"
-> 
+>
 > print(text[0])  # First character
 > print(text[-1])  # Last character
 > ```
+>
 > > [!success]- Code Output
-> P  
-> n
+> > P  
+> > n
 
 <br>
 
@@ -73,17 +169,18 @@ Python strings are sequences, which means you can access individual characters a
 >
 > ```python
 > text = "Python"
-> 
+>
 > print(text[0:3])  # First three characters
 > print(text[2:])    # From index 2 to the end
 > print(text[:4])    # From the start to index 4 (exclusive)
 > print(text[::2])   # Every second character
 > ```
+>
 > > [!success]- Code Output
-> Pyt  
-> thon  
-> Pyth  
-> Pto
+> > Pyt  
+> > thon  
+> > Pyth  
+> > Pto
 
 <br>
 
@@ -94,13 +191,14 @@ Python strings are sequences, which means you can access individual characters a
 >
 > ```python
 > text = "Python"
-> 
+>
 > print(text[-3:])   # Last three characters
 > print(text[:-3])   # All except the last three characters
 > ```
+>
 > > [!success]- Code Output
-> hon  
-> Pyt
+> > hon  
+> > Pyt
 
 <br>
 
@@ -113,8 +211,9 @@ Python strings are sequences, which means you can access individual characters a
 > text = "Python"
 > print(text[::-1])
 > ```
+>
 > > [!success]- Code Output
-> nohtyP
+> > nohtyP
 
 <br>
 
@@ -125,13 +224,14 @@ Python strings are sequences, which means you can access individual characters a
 >
 > ```python
 > text = "Python"
-> 
+>
 > print(text[::2])   # Every second character
 > print(text[1::2])  # Every second character starting at index 1
 > ```
+>
 > > [!success]- Code Output
-> Pto  
-> yhn
+> > Pto  
+> > yhn
 
 <br>
 
@@ -142,12 +242,13 @@ Python strings are sequences, which means you can access individual characters a
 >
 > ```python
 > text = "Python"
-> 
+>
 > modified_text = text[:3] + "x" + text[4:]
 > print(modified_text)
 > ```
+>
 > > [!success]- Code Output
-> Pyxhon
+> > Pyxhon
 
 <br>
 
@@ -174,8 +275,9 @@ Python’s `str` type provides various methods that simplify text processing, se
 > text = "hello"
 > print(text.upper())
 > ```
+>
 > > [!success]- Code Output
-> HELLO
+> > HELLO
 
 <br>
 
@@ -188,8 +290,9 @@ Python’s `str` type provides various methods that simplify text processing, se
 > text = "HELLO"
 > print(text.lower())
 > ```
+>
 > > [!success]- Code Output
-> hello
+> > hello
 
 <br>
 
@@ -202,8 +305,9 @@ Python’s `str` type provides various methods that simplify text processing, se
 > text = "hello world"
 > print(text.capitalize())
 > ```
+>
 > > [!success]- Code Output
-> Hello world
+> > Hello world
 
 <br>
 
@@ -216,8 +320,9 @@ Python’s `str` type provides various methods that simplify text processing, se
 > text = "hello world"
 > print(text.title())
 > ```
+>
 > > [!success]- Code Output
-> Hello World
+> > Hello World
 
 <br>
 
@@ -230,8 +335,9 @@ Python’s `str` type provides various methods that simplify text processing, se
 > text = "Hello World"
 > print(text.swapcase())
 > ```
+>
 > > [!success]- Code Output
-> hELLO wORLD
+> > hELLO wORLD
 
 <br>
 
@@ -239,7 +345,7 @@ Python’s `str` type provides various methods that simplify text processing, se
 
 <br>
 
-## **String Search Methods**
+## String Search Methods
 
 Python strings provide methods to search for substrings, find their positions, and verify content.
 
@@ -258,8 +364,9 @@ Python strings provide methods to search for substrings, find their positions, a
 > text = "Hello, World!"
 > print(text.find("World"))
 > ```
+>
 > > [!success]- Code Output
-> 7
+> > 7
 
 <br>
 
@@ -272,8 +379,9 @@ Python strings provide methods to search for substrings, find their positions, a
 > text = "Hello, World!"
 > print(text.index("World"))
 > ```
+>
 > > [!success]- Code Output
-> 7
+> > 7
 
 <br>
 
@@ -286,8 +394,9 @@ Python strings provide methods to search for substrings, find their positions, a
 > text = "Hello, World!"
 > print(text.rfind("o"))
 > ```
+>
 > > [!success]- Code Output
-> 8
+> > 8
 
 <br>
 
@@ -300,8 +409,9 @@ Python strings provide methods to search for substrings, find their positions, a
 > text = "Hello, World!"
 > print(text.rindex("o"))
 > ```
+>
 > > [!success]- Code Output
-> 8
+> > 8
 
 <br>
 
@@ -314,8 +424,9 @@ Python strings provide methods to search for substrings, find their positions, a
 > text = "Hello, World!"
 > print(text.count("o"))
 > ```
+>
 > > [!success]- Code Output
-> 2
+> > 2
 
 <br>
 
@@ -323,7 +434,7 @@ Python strings provide methods to search for substrings, find their positions, a
 
 <br>
 
-## **String Validation Methods**
+## String Validation Methods
 
 These methods check if a string meets certain conditions, such as being alphabetical or numeric.
 
@@ -342,8 +453,9 @@ These methods check if a string meets certain conditions, such as being alphabet
 > text = "Hello"
 > print(text.isalpha())
 > ```
+>
 > > [!success]- Code Output
-> True
+> > True
 
 <br>
 
@@ -356,8 +468,9 @@ These methods check if a string meets certain conditions, such as being alphabet
 > text = "12345"
 > print(text.isdigit())
 > ```
+>
 > > [!success]- Code Output
-> True
+> > True
 
 <br>
 
@@ -370,8 +483,9 @@ These methods check if a string meets certain conditions, such as being alphabet
 > text = "Hello123"
 > print(text.isalnum())
 > ```
+>
 > > [!success]- Code Output
-> True
+> > True
 
 <br>
 
@@ -384,8 +498,9 @@ These methods check if a string meets certain conditions, such as being alphabet
 > text = "   "
 > print(text.isspace())
 > ```
+>
 > > [!success]- Code Output
-> True
+> > True
 
 <br>
 
@@ -398,8 +513,9 @@ These methods check if a string meets certain conditions, such as being alphabet
 > text = "Hello World"
 > print(text.istitle())
 > ```
+>
 > > [!success]- Code Output
-> True
+> > True
 
 <br>
 
@@ -412,8 +528,9 @@ These methods check if a string meets certain conditions, such as being alphabet
 > text = "hello"
 > print(text.islower())
 > ```
+>
 > > [!success]- Code Output
-> True
+> > True
 
 <br>
 
@@ -426,8 +543,9 @@ These methods check if a string meets certain conditions, such as being alphabet
 > text = "HELLO"
 > print(text.isupper())
 > ```
+>
 > > [!success]- Code Output
-> True
+> > True
 
 <br>
 
@@ -435,7 +553,7 @@ These methods check if a string meets certain conditions, such as being alphabet
 
 <br>
 
-## **String Modification Methods**
+## String Modification Methods
 
 These methods allow transformations of string content, such as replacing, removing whitespace, or joining elements.
 
@@ -454,8 +572,9 @@ These methods allow transformations of string content, such as replacing, removi
 > text = "Hello, World!"
 > print(text.replace("World", "Python"))
 > ```
+>
 > > [!success]- Code Output
-> Hello, Python!
+> > Hello, Python!
 
 <br>
 
@@ -468,8 +587,9 @@ These methods allow transformations of string content, such as replacing, removi
 > text = "  Hello, World!  "
 > print(text.strip())
 > ```
+>
 > > [!success]- Code Output
-> Hello, World!
+> > Hello, World!
 
 <br>
 
@@ -482,8 +602,9 @@ These methods allow transformations of string content, such as replacing, removi
 > text = "  Hello, World!"
 > print(text.lstrip())
 > ```
+>
 > > [!success]- Code Output
-> Hello, World!
+> > Hello, World!
 
 <br>
 
@@ -496,8 +617,9 @@ These methods allow transformations of string content, such as replacing, removi
 > text = "Hello, World!  "
 > print(text.rstrip())
 > ```
+>
 > > [!success]- Code Output
-> Hello, World!
+> > Hello, World!
 
 <br>
 
@@ -505,7 +627,7 @@ These methods allow transformations of string content, such as replacing, removi
 
 <br>
 
-## **String Formatting Methods**
+## String Formatting Methods
 
 Python offers several ways to format strings, including f-strings, `format()`, and methods for alignment.
 
@@ -515,7 +637,7 @@ Python offers several ways to format strings, including f-strings, `format()`, a
 
 <br>
 
-### format(*args, **kwargs)
+### format(\*args, \*\*kwargs)
 
 > [!info]
 > Formats the string using placeholders (`{}`) with positional or keyword arguments.
@@ -524,8 +646,9 @@ Python offers several ways to format strings, including f-strings, `format()`, a
 > text = "Hello, {}!"
 > print(text.format("Python"))
 > ```
+>
 > > [!success]- Code Output
-> Hello, Python!
+> > Hello, Python!
 
 <br>
 
@@ -538,8 +661,27 @@ Python offers several ways to format strings, including f-strings, `format()`, a
 > name = "Python"
 > print(f"Hello, {name}!")
 > ```
+>
 > > [!success]- Code Output
-> Hello, Python!
+> > Hello, Python!
+
+<br>
+
+### fr-strings (formatted raw string literals)
+
+> [!info]
+> Formatted raw strings (`rf`) are powerful for scenarios like working with Windows file paths or regex patterns that need dynamic variable interpolation. They combine the best of both raw and formatted strings.
+>
+> `rf` or `fr` can be used interchangeably; the behavior is the same.
+>
+> ```python
+> user_name = "Adam"
+> path = rf"C:\{user_name}\Documents"
+> print(path)
+> ```
+>
+> > [!success]- Code Output
+> > C:\Adam\Documents
 
 <br>
 
@@ -547,7 +689,7 @@ Python offers several ways to format strings, including f-strings, `format()`, a
 
 <br>
 
-## **String Joining and Splitting**
+## String Joining and Splitting
 
 These methods are used to join multiple strings or split strings into lists.
 
@@ -566,8 +708,9 @@ These methods are used to join multiple strings or split strings into lists.
 > words = ["Hello", "World"]
 > print(" ".join(words))
 > ```
+>
 > > [!success]- Code Output
-> Hello World
+> > Hello World
 
 <br>
 
@@ -584,9 +727,10 @@ These methods are used to join multiple strings or split strings into lists.
 > first, second = text.split()
 > print(first, second)
 > ```
+>
 > > [!success]- Code Output
-> ['Hello', 'World']
-> Hello World
+> > ['Hello', 'World']
+> > Hello World
 
 <br>
 
@@ -599,8 +743,9 @@ These methods are used to join multiple strings or split strings into lists.
 > text = "Hello, World!"
 > print(text.partition(","))
 > ```
+>
 > > [!success]- Code Output
-> ('Hello', ',', ' World!')
+> > ('Hello', ',', ' World!')
 
 <br>
 
@@ -613,5 +758,6 @@ These methods are used to join multiple strings or split strings into lists.
 > text = "Hello, World!"
 > print(text.rpartition(","))
 > ```
+>
 > > [!success]- Code Output
-> ('Hello', ',', ' World!')
+> > ('Hello', ',', ' World!')
